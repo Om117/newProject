@@ -16,9 +16,8 @@ function App() {
       {/* <Footer /> */}
       <BrowserRouter>
         <Routes>
-          {/* <Route path="/" Component={Home} /> */}
-          <Route path="/" Component={Home} />
-          <Route path='/login' Component={LoginScreen} />
+          <Route path='/' Component={LoginScreen} />
+          <Route path="/home" Component={Home} />
           <Route path="/signup" Component={SignupScreen} />
         </Routes>
       </BrowserRouter>

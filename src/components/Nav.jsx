@@ -1,8 +1,40 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Logo from "../images/SOFT_ID_LOGO.png";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Link,
+  useNavigate,
+} from "react-router-dom";
+import { ID } from "appwrite";
+
+import { client, account } from "../appwrite/appwriteAuth";
 
 function Nav() {
+  const navigate = useNavigate();
+
+  const [user, setuser] = useState("");
+
+  async function getUser() {
+    const userData = await account.get();
+    setuser(userData);
+  }
+
+  async function logout() {
+    try {
+      const result = await account.deleteSession("current");
+      console.log("Logout successful::", result);
+    } catch (error) {
+      console.log("Error:: Logout Error---", error);
+    }
+    navigate("/");
+  }
+
+  useEffect(() => {
+    getUser();
+  }, []);
+
   return (
     <nav className="bg-white border-gray-200 dark:bg-gray-900">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
@@ -18,9 +50,27 @@ function Nav() {
               type="button"
               className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             >
-              Log In
+              {user ? (
+                <>
+                  <i class="fa-solid fa-user mr-2" />
+                  {user.name}
+                </>
+              ) : (
+                "Login"
+              )}
             </button>
           </Link>
+          {user ? (
+            <>
+              <button
+                type="button"
+                onClick={logout}
+                className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              >
+                Logout
+              </button>
+            </>
+          ) : null}
           <button
             data-collapse-toggle="navbar-cta"
             type="button"

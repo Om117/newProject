@@ -7,7 +7,6 @@ import {
   Link,
   useNavigate,
 } from "react-router-dom";
-import Footer from "../components/Footer";
 import { ID } from "appwrite";
 import { client, account } from "../appwrite/appwriteAuth";
 
@@ -108,7 +107,6 @@ function LoginScreen() {
           </p>
         </div>
       </div>
-      <Footer />
     </>
   );
 }

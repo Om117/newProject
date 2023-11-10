@@ -1,7 +1,12 @@
 import { React, useState } from "react";
 import Logo from "../images/SOFT_ID_LOGO.png";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import Footer from "../components/Footer";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Link,
+  useNavigate,
+} from "react-router-dom";
 import { ID } from "appwrite";
 import { client, account } from "../appwrite/appwriteAuth";
 function SignupScreen() {
@@ -9,8 +14,8 @@ function SignupScreen() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [Cpassword, setCPassword] = useState("");
-  // const date = Date.now();
-  // Omjadav@123
+  const navigate = useNavigate();
+
   async function handleSignup(e) {
     e.preventDefault();
     try {
@@ -25,6 +30,7 @@ function SignupScreen() {
     setEmail("");
     setPassword("");
     setCPassword("");
+    navigate("/");
   }
 
   return (
@@ -135,7 +141,7 @@ function SignupScreen() {
 
           <p className="mt-10 text-center text-sm text-gray-500">
             Already Have an Account?
-            <Link to="/login">
+            <Link to="/">
               <a
                 href="#"
                 className="createAccountLink font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
@@ -146,7 +152,6 @@ function SignupScreen() {
           </p>
         </div>
       </div>
-      <Footer />
     </>
   );
 }

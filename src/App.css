@@ -36,3 +36,10 @@
     transform: rotate(360deg);
   }
 }
+
+.createAccountLink {
+  color: #5850ec !important;
+}
+.createAccountLink:hover {
+  color: #443dbb !important;
+}

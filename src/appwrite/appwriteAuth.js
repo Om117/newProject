@@ -8,5 +8,6 @@ client
 
 
 
+export const databases = new Databases(client);
 export const account = new Account(client);
 // export { ID } from 'appwrite';

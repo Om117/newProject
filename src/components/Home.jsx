@@ -13,7 +13,7 @@ function Home() {
   return (
     <>
       <Nav />
-      <div className="text-center  bg-gray-400">
+      <div className="text-center p-5 bg-gray-400">
         <Posts />
         <div></div>
       </div>

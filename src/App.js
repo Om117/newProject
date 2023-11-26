@@ -11,7 +11,6 @@ import LoginScreen from './screens/Loginscreen';
 import SignupScreen from './screens/SignupScreen';
 import { BrowserRouter, Routes, Route, Link, useParams } from "react-router-dom";
 function App() {
-  let { userId } = useParams();
   return (
 
     <>

@@ -23,16 +23,14 @@ function Footer() {
               <ul className="text-gray-500 dark:text-gray-400 font-medium">
                 <Link to="/home">
                   <li className="mb-4">
-                    <a href="#" className="hover:underline">
-                      Home
-                    </a>
+                    <a className="hover:underline">Home</a>
                   </li>
                 </Link>
-                <li>
-                  <a href="#" className="hover:underline">
-                    Something
-                  </a>
-                </li>
+                <Link to="/posts">
+                  <li>
+                    <a className="hover:underline">Posts</a>
+                  </li>
+                </Link>
               </ul>
             </div>
             <div>
